@@ -41,20 +41,21 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-  title: const Text('JokeAPI App'),
-  actions: [
-    IconButton(
-      icon: const Icon(Icons.star),
-      tooltip: 'Ver favoritos',
-      onPressed: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => const FavoritesScreen()),
-        );
-      },
-    ),
-  ],
-),
+        title: const Text('JokeAPI App', style: TextStyle(color: Colors.white)), 
+        backgroundColor: Colors.deepPurple, 
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.star, color: Colors.white), 
+            tooltip: 'Ver favoritos',
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const FavoritesScreen()),
+              );
+            },
+          ),
+        ],
+      ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
@@ -62,8 +63,15 @@ class _HomeScreenState extends State<HomeScreen> {
             TextField(
               decoration: InputDecoration(
                 labelText: 'Buscar chiste',
+                labelStyle: TextStyle(color: Colors.deepPurple), 
+                focusedBorder: OutlineInputBorder( 
+                  borderSide: BorderSide(color: Colors.deepPurple, width: 2.0),
+                ),
+                enabledBorder: OutlineInputBorder(
+                  borderSide: BorderSide(color: Colors.deepPurpleAccent, width: 1.0),
+                ),
                 suffixIcon: IconButton(
-                  icon: const Icon(Icons.search),
+                  icon: const Icon(Icons.search, color: Colors.deepPurple), 
                   onPressed: _fetchJoke,
                 ),
               ),
@@ -72,7 +80,7 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
             const SizedBox(height: 20),
             if (_loading)
-              const CircularProgressIndicator()
+              const CircularProgressIndicator(valueColor: AlwaysStoppedAnimation<Color>(Colors.deepPurple)) 
             else if (_error != null)
               Text(_error!, style: const TextStyle(color: Colors.red))
             else if (_joke != null)
@@ -84,9 +92,9 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: _fetchJoke,
-        child: const Icon(Icons.refresh),
+        backgroundColor: Colors.deepPurple, 
+        child: const Icon(Icons.refresh, color: Colors.white), 
       ),
     );
   }
 }
-

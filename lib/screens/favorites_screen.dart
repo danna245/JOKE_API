@@ -34,14 +34,15 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Favoritos'),
-        backgroundColor: Colors.deepPurple,
+        title: const Text('Favoritos', style: TextStyle(color: Colors.white)), // Título blanco
+        backgroundColor: Colors.deepPurple, // AppBar morada
+        iconTheme: const IconThemeData(color: Colors.white), // Flecha de retroceso blanca
       ),
       body: _favorites.isEmpty
           ? const Center(
               child: Text(
                 'No tienes chistes favoritos.',
-                style: TextStyle(fontSize: 18, color: Colors.grey),
+                style: TextStyle(fontSize: 18, color: Colors.deepPurple), // Texto morado
               ),
             )
           : ListView.separated(
@@ -54,11 +55,12 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(16),
                   ),
+                  color: Colors.deepPurple.shade50, // Fondo de la tarjeta morado claro
                   child: ListTile(
-                    leading: const Icon(Icons.emoji_emotions, color: Colors.amber),
+                    leading: const Icon(Icons.emoji_emotions, color: Colors.deepPurple), // Icono morado
                     title: Text(
                       _favorites[index],
-                      style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+                      style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w500, color: Colors.deepPurple), // Texto morado
                     ),
                     trailing: IconButton(
                       icon: const Icon(Icons.delete, color: Colors.red),

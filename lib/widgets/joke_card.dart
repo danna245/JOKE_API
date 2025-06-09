@@ -52,26 +52,56 @@ class _JokeCardState extends State<JokeCard> {
   @override
   Widget build(BuildContext context) {
     return Card(
+      elevation: 8, 
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)), 
+      color: Colors.white, // Fondo de la tarjeta blanco
+      margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 5), 
       child: Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(18.0), 
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             widget.joke.type == 'single'
-                ? Text(widget.joke.joke ?? '')
+                ? Text(
+                    widget.joke.joke ?? '',
+                    style: const TextStyle(
+                      fontSize: 19, 
+                      color: Colors.black87,
+                      fontFamily: 'Roboto', 
+                    ),
+                  )
                 : Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(widget.joke.setup ?? '', style: const TextStyle(fontWeight: FontWeight.bold)),
-                      const SizedBox(height: 8),
-                      Text(widget.joke.delivery ?? ''),
+                      Text(
+                        widget.joke.setup ?? '',
+                        style: const TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 19, 
+                          color: Colors.black87,
+                          fontFamily: 'Roboto',
+                        ),
+                      ),
+                      const SizedBox(height: 10), 
+                      Text(
+                        widget.joke.delivery ?? '',
+                        style: const TextStyle(
+                          fontSize: 19, 
+                          color: Colors.black87,
+                          fontFamily: 'Roboto',
+                        ),
+                      ),
                     ],
                   ),
-            const SizedBox(height: 12),
+            const SizedBox(height: 15), 
             Align(
               alignment: Alignment.centerRight,
               child: IconButton(
-                icon: Icon(_isFavorite ? Icons.star : Icons.star_border, color: Colors.amber),
+                icon: Icon(
+                  _isFavorite ? Icons.star : Icons.star_border,
+                  color: Colors.amber[700], 
+                  size: 30, 
+                ),
                 onPressed: _toggleFavorite,
                 tooltip: _isFavorite ? 'Quitar de favoritos' : 'Agregar a favoritos',
               ),
